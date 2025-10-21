@@ -1,59 +1,44 @@
-# SystematischSchoenAngularDaysFall2025
+# Systematisch schön - Mit Design Tokens & Angular auf dem Weg zum skalierbaren Designsystem
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.6.
+[Angular Days 2025](https://javascript-days.de/angular/angular-auf-dem-weg-zum-skalierbaren-designsystem/), 23. Oktober 2025, 13:30–17:,0
 
-## Development server
+Trainer: Sascha Lehmann ([@derLehmann_S](https://twitter.com/derLehmann_S)) ([@Thinktecture](https://www.thinktecture.com/thinktects/sascha-lehmann/))
 
-To start a local development server, run:
+Designsysteme entfalten ihre volle Wirkung erst dann, wenn Design und Code nahtlos zusammenspielen. In diesem Workshop zeigt Sascha Lehmann, Consultant bei der Thinktecture AG, wie sich Design Tokens aus Figma effizient in Angular-Projekte integrieren lassen.
 
-```bash
-ng serve
+In diesem Hands-On Workshop bauen Sie gemeinsam eine themenfähige Komponentenbibliothek, die auf modernen Angular-Prinzipien wie Standalone Components und Signals basiert. Tools wie Style Dictionary und Storybook helfen dabei, Tokens nicht nur technisch nutzbar zu machen, sondern auch dokumentier- und testbar.
+
+## Installationsanweisungen
+
+Sie können mitentwickeln: Bitte bringen Sie dazu Ihr Notebook mit installiertem [Google Chrome](https://www.google.com/chrome/) ([Canary](https://www.google.com/chrome/canary/)), [Git](https://git-scm.com/), [Node.js](https://nodejs.org/) und [WebStorm](https://www.jetbrains.com/webstorm/) oder [Visual Studio Code](https://code.visualstudio.com/) mit.
+
+Es ist ein uneingeschränkter Internetzugriff erforderlich (ohne Gruppenrichtlinien, Unternehmensproxys und -firewalls), bitte im Zweifel das Privatnotebook einpacken.
+
+Nach dem Klonen des Repositorys führen Sie bitte folgende Kommandos auf der Kommandozeile aus:
+
+```sh
+npm i
+npm start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+Das Projekt beruht auf er [Angular CLI](https://github.com/angular/angular-cli) Version 20.3.0.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Hands-on Lab
 
-```bash
-ng generate component component-name
+### 1. Tokens konvertieren
+
+Führe zunächst den folgenden Befehl aus:
+
+```sh
+npx style-dictionary basic
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Style-Dictionary erstellt ein grundlegendes Stetup und erzeugt eine "config.json" sowie einen "tokens" und "build" Ordner. Mit dem Befehl:
 
-```bash
-ng generate --help
+```sh
+npm run build:tokens
 ```
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+kannst du die exportierten Tokens im JSON Format in alle beliebigen Formate überfüren. Das Format entspricht dem [W3C Tokens Fomrmat](https://www.designtokens.org/tr/drafts/format/)
