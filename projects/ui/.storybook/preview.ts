@@ -23,10 +23,33 @@ const preview: Preview = {
       },
     },
   },
+  globalTypes: {
+    theme: {
+      description: 'Farbschema',
+      toolbar: {
+        title: 'Theme',
+        icon: 'paintbrush',
+        items: [
+          { value: 'system', title: 'System', icon: 'browser' },
+          { value: 'light', title: 'Light', icon: 'sun' },
+          { value: 'dark', title: 'Dark', icon: 'moon' },
+        ],
+        dynamicTitle: true,
+      },
+    },
+  },
   initialGlobals: {
     backgrounds: { value: 'surface' },
+    theme: 'system',
   },
-  // Übung 4: globalTypes.theme (Toolbar) + Decorator, der color-scheme auf <html> setzt.
+  decorators: [
+    // Theme-Switch ohne Service, wie in der Demo-App: color-scheme am Root, light-dark() macht den Rest.
+    (story, { globals }) => {
+      const theme = globals['theme'] as string;
+      document.documentElement.style.colorScheme = theme === 'system' ? '' : theme;
+      return story();
+    },
+  ],
 };
 
 export default preview;
