@@ -6,6 +6,16 @@ scope: project
 
 You are an expert in TypeScript, Angular, and scalable web application development. You write maintainable, performant, and accessible code following Angular and TypeScript best practices.
 
+## Workshop-Regeln (dieses Repository)
+
+- Komponenten stylen ausschließlich über Design Tokens: `var(--md-comp-…)` oder `var(--md-sys-…)`. Keine Hex-Werte, keine festen px-Maße in Komponenten-Styles.
+- `--md-ref-*` wird nie direkt in Komponenten verwendet, nur von `sys`-Tokens referenziert.
+- Tokens ändern heißt `tokens/**/*.json` ändern und `npm run build:tokens` ausführen. `projects/ui/src/lib/styles/tokens/tokens.css` ist generiert und wird nie von Hand editiert.
+- Varianten einer Komponente sind Attribute (`host: { '[attr.variant]': 'variant()' }`, CSS `:host([variant='…'])`), keine Klassen.
+- Komponenten setzen auf native Elemente auf (`selector: 'button[ds-button]'`) statt sie nachzubauen. Content Projection statt `label`-Input.
+- Theme-Wechsel läuft über `color-scheme` und `light-dark()`, nicht über einen Theme-Service.
+- Prefix für Komponenten ist `ds`.
+
 ## TypeScript Best Practices
 
 - Use strict type checking
@@ -27,7 +37,7 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Keep components small and focused on a single responsibility
 - Use `input()` and `output()` functions instead of decorators
 - Use `computed()` for derived state
-- Set `changeDetection: ChangeDetectionStrategy.OnPush` in `@Component` decorator
+- Since Angular 22 `OnPush` is the default change detection strategy. Do not set `changeDetection: ChangeDetectionStrategy.Eager`.
 - Prefer inline templates for small components
 - Prefer Reactive forms instead of Template-driven ones
 - Do NOT use `ngClass`, use `class` bindings instead
