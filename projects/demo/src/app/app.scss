@@ -1,0 +1,69 @@
+@use '../../../ui/src/lib/styles/mixins/typography';
+
+:host {
+  display: block;
+  max-width: 64rem;
+  margin-inline: auto;
+  padding: var(--md-sys-spacing-6);
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--md-sys-spacing-4);
+  margin-block-end: var(--md-sys-spacing-8);
+}
+
+section {
+  margin-block-end: var(--md-sys-spacing-8);
+}
+
+h2 {
+  margin-block-end: var(--md-sys-spacing-2);
+}
+
+.swatches {
+  list-style: none;
+  padding: 0;
+  margin-block-start: var(--md-sys-spacing-4);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: var(--md-sys-spacing-2);
+
+  li {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 5rem;
+    padding: var(--md-sys-spacing-4);
+    border-radius: var(--md-sys-shape-corner-medium);
+    outline: 1px solid var(--md-sys-color-outline-variant);
+  }
+
+  span {
+    @include typography.style('label-medium');
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--md-sys-spacing-3);
+}
+
+.card {
+  padding: var(--md-sys-spacing-6);
+  border-radius: var(--md-sys-shape-corner-large);
+  background: var(--md-sys-color-surface-container);
+  color: var(--md-sys-color-on-surface);
+}
+
+$styles: display-large, headline-medium, title-large, body-large, body-medium, label-large;
+@each $s in $styles {
+  .type-#{$s} {
+    @include typography.style($s);
+  }
+}

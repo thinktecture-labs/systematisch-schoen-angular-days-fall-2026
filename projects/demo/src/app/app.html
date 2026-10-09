@@ -1,0 +1,41 @@
+<header class="hero">
+  <div>
+    <h1>Systematisch schön</h1>
+    <p>Design Tokens → Style Dictionary → CSS Custom Properties → Angular</p>
+  </div>
+  <button ds-button (click)="toggleTheme()">Theme: {{ theme() }}</button>
+</header>
+
+<section>
+  <h2>Farbrollen</h2>
+  <p>Jede Kachel liest <code>--md-sys-color-*</code>. Die Seite kennt Rollen, keine Farben.</p>
+  <ul class="swatches">
+    @for (s of swatches; track s.role) {
+      <li
+        [style.background]="'var(--md-sys-color-' + s.role + ')'"
+        [style.color]="'var(--md-sys-color-' + s.on + ')'"
+      >
+        <strong>{{ s.role }}</strong>
+        <span>{{ s.on }}</span>
+      </li>
+    }
+  </ul>
+</section>
+
+<section>
+  <h2>Typescale</h2>
+  @for (t of typescale; track t) {
+    <p [class]="'type-' + t">{{ t }} · Systematisch schön</p>
+  }
+</section>
+
+<section>
+  <h2>Komponenten</h2>
+  <div class="row">
+    <button ds-button>Filled</button>
+    <button ds-button disabled>Disabled</button>
+    <!-- Übung 3: variant="tonal" | "outlined" | "text" und size="s" | "l" -->
+  </div>
+</section>
+
+<!-- Übung 2: Teilbaum-Theming. Eine dunkle Karte auf heller Seite: <section class="card" style="color-scheme: dark"> -->

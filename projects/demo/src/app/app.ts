@@ -1,0 +1,48 @@
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { Button } from '@ui';
+
+interface Swatch {
+  role: string;
+  on: string;
+}
+
+@Component({
+  selector: 'app-root',
+  imports: [Button],
+  templateUrl: './app.html',
+  styleUrl: './app.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class App {
+  protected readonly theme = signal<'system' | 'light' | 'dark'>('system');
+
+  protected readonly swatches: Swatch[] = [
+    { role: 'primary', on: 'on-primary' },
+    { role: 'primary-container', on: 'on-primary-container' },
+    { role: 'secondary', on: 'on-secondary' },
+    { role: 'secondary-container', on: 'on-secondary-container' },
+    { role: 'tertiary', on: 'on-tertiary' },
+    { role: 'tertiary-container', on: 'on-tertiary-container' },
+    { role: 'error', on: 'on-error' },
+    { role: 'error-container', on: 'on-error-container' },
+    { role: 'surface', on: 'on-surface' },
+    { role: 'surface-container', on: 'on-surface' },
+    { role: 'surface-container-highest', on: 'on-surface-variant' },
+    { role: 'inverse-surface', on: 'inverse-on-surface' },
+  ];
+
+  protected readonly typescale = [
+    'display-large',
+    'headline-medium',
+    'title-large',
+    'body-large',
+    'body-medium',
+    'label-large',
+  ];
+
+  protected toggleTheme(): void {
+    // Übung 2: Theme-Switch ohne Service.
+    // Tipp: document.documentElement.style.colorScheme = 'dark' | 'light' | '' (zurück zum System)
+    console.warn('Übung 2: toggleTheme() implementieren');
+  }
+}
