@@ -1,0 +1,32 @@
+{
+  "comp": {
+    "button": {
+      "container-shape": { "$type": "dimension", "$value": "{sys.shape.corner.full}" },
+      "container-height": { "$type": "dimension", "$value": "{sys.spacing.10}" },
+      "padding-inline": { "$type": "dimension", "$value": "{sys.spacing.6}" },
+      "icon-gap": { "$type": "dimension", "$value": "{sys.spacing.2}" },
+      "filled": {
+        "container-color": { "$type": "color", "$value": "{sys.color.primary}" },
+        "label-color": { "$type": "color", "$value": "{sys.color.on-primary}" }
+      },
+      "tonal": {
+        "container-color": { "$type": "color", "$value": "{sys.color.secondary-container}" },
+        "label-color": { "$type": "color", "$value": "{sys.color.on-secondary-container}" }
+      },
+      "outlined": {
+        "outline-color": { "$type": "color", "$value": "{sys.color.outline}" },
+        "label-color": { "$type": "color", "$value": "{sys.color.primary}" }
+      },
+      "text": {
+        "label-color": { "$type": "color", "$value": "{sys.color.primary}" }
+      },
+      "disabled": {
+        "container-opacity": {
+          "$type": "number",
+          "$value": "{sys.state.disabled.container-opacity}"
+        },
+        "label-opacity": { "$type": "number", "$value": "{sys.state.disabled.content-opacity}" }
+      }
+    }
+  }
+}
