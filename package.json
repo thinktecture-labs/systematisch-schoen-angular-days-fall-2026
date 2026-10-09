@@ -7,7 +7,7 @@
     "start": "ng serve demo",
     "prestart": "npm run build:tokens",
     "build": "ng build ui",
-    "build:tokens": "style-dictionary build",
+    "build:tokens": "node scripts/build-tokens.mjs",
     "generate:tokens": "node scripts/generate-tokens.mjs",
     "storybook": "ng run ui:storybook",
     "prestorybook": "npm run build:tokens",

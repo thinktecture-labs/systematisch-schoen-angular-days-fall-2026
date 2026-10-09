@@ -6,6 +6,8 @@ interface Swatch {
   on: string;
 }
 
+type Theme = 'system' | 'light' | 'dark';
+
 @Component({
   selector: 'app-root',
   imports: [Button],
@@ -14,7 +16,7 @@ interface Swatch {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class App {
-  protected readonly theme = signal<'system' | 'light' | 'dark'>('system');
+  protected readonly theme = signal<Theme>('system');
 
   protected readonly swatches: Swatch[] = [
     { role: 'primary', on: 'on-primary' },
@@ -40,9 +42,14 @@ export class App {
     'label-large',
   ];
 
+  /**
+   * Theme-Switch ohne Service: `color-scheme` am Root reicht, `light-dark()` in den Tokens
+   * erledigt den Rest. Ein leerer Wert gibt die Entscheidung an das Betriebssystem zurück.
+   */
   protected toggleTheme(): void {
-    // Übung 2: Theme-Switch ohne Service.
-    // Tipp: document.documentElement.style.colorScheme = 'dark' | 'light' | '' (zurück zum System)
-    console.warn('Übung 2: toggleTheme() implementieren');
+    const next: Record<Theme, Theme> = { system: 'light', light: 'dark', dark: 'system' };
+    const theme = next[this.theme()];
+    this.theme.set(theme);
+    document.documentElement.style.colorScheme = theme === 'system' ? '' : theme;
   }
 }
