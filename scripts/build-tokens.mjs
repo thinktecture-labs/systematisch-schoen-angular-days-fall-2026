@@ -44,17 +44,22 @@ for (const theme of THEMES) {
   await sd.buildAllPlatforms();
 }
 
+// Eine Zeile pro Custom Property: `  --name: wert; /** optionale $description */`
+const DECLARATION = /^\s*(--[\w-]+):\s*(.+?);\s*(\/\*.*?\*\/)?\s*$/gm;
 const declarations = (file) =>
   Object.fromEntries(
-    [...readFileSync(file, 'utf8').matchAll(/^\s*(--[\w-]+):\s*(.+);$/gm)].map((m) => [m[1], m[2]]),
+    [...readFileSync(file, 'utf8').matchAll(DECLARATION)].map((m) => [
+      m[1],
+      { value: m[2], comment: m[3] ? ` ${m[3]}` : '' },
+    ]),
   );
 const light = declarations(`${TMP}tokens-light.css`);
 const dark = declarations(`${TMP}tokens-dark.css`);
 
-const lines = Object.entries(light).map(([name, value]) => {
-  const darkValue = dark[name];
+const lines = Object.entries(light).map(([name, { value, comment }]) => {
+  const darkValue = dark[name]?.value;
   const themed = darkValue !== undefined && darkValue !== value;
-  return `  ${name}: ${themed ? `light-dark(${value}, ${darkValue})` : value};`;
+  return `  ${name}: ${themed ? `light-dark(${value}, ${darkValue})` : value};${comment}`;
 });
 
 mkdirSync(OUT, { recursive: true });
