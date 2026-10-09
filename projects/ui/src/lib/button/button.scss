@@ -1,26 +1,79 @@
-// Übung 3: Dieser Button kennt noch Hex-Werte und nur eine Variante.
-// Ziel: nur noch Token-Rollen (var(--md-comp-button-…), var(--md-sys-…)) und
-// Varianten über :host([variant='…']) bzw. :host([size='…']).
+@use '../styles/mixins/typography';
+@use '../styles/mixins/state';
 
+// Der Button kennt nur Token-Rollen. Varianten und Größen sind Attribute (siehe host-Bindings).
 :host {
+  @include typography.style('label-large');
+  @include state.layer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  min-height: 2.5rem;
-  padding: 0 1.5rem;
-  border: 0;
-  border-radius: 1000px;
-  background: #6750a4;
-  color: #ffffff;
-  font:
-    500 0.875rem / 1.25rem 'Quattrocento Sans',
-    sans-serif;
-  letter-spacing: 0.1px;
+  gap: var(--md-comp-button-icon-gap);
+  min-height: var(--md-comp-button-container-height);
+  padding-inline: var(--md-comp-button-padding-inline);
+  border: 1px solid transparent;
+  border-radius: var(--md-comp-button-container-shape);
+  background: var(--md-comp-button-filled-container-color);
+  color: var(--md-comp-button-filled-label-color);
+  text-decoration: none;
   cursor: pointer;
 }
 
-:host(:disabled) {
-  opacity: 0.38;
+:host([variant='tonal']) {
+  background: var(--md-comp-button-tonal-container-color);
+  color: var(--md-comp-button-tonal-label-color);
+}
+
+:host([variant='outlined']) {
+  background: transparent;
+  border-color: var(--md-comp-button-outlined-outline-color);
+  color: var(--md-comp-button-outlined-label-color);
+}
+
+:host([variant='text']) {
+  background: transparent;
+  color: var(--md-comp-button-text-label-color);
+  padding-inline: var(--md-sys-spacing-3);
+}
+
+:host([size='s']) {
+  @include typography.style('label-medium');
+  min-height: var(--md-sys-spacing-8);
+  padding-inline: var(--md-sys-spacing-4);
+}
+
+:host([size='l']) {
+  @include typography.style('title-medium');
+  min-height: var(--md-sys-spacing-12);
+  padding-inline: var(--md-sys-spacing-8);
+}
+
+// Disabled nach M3: Container und Label aus on-surface mit Token-Deckkraft.
+:host(:disabled),
+:host([aria-disabled='true']) {
   cursor: default;
+  border-color: transparent;
+  background: color-mix(
+    in srgb,
+    var(--md-sys-color-on-surface) calc(var(--md-comp-button-disabled-container-opacity) * 100%),
+    transparent
+  );
+  color: color-mix(
+    in srgb,
+    var(--md-sys-color-on-surface) calc(var(--md-comp-button-disabled-label-opacity) * 100%),
+    transparent
+  );
+}
+
+:host([variant='outlined']:disabled),
+:host([variant='text']:disabled) {
+  background: transparent;
+}
+
+:host([variant='outlined']:disabled) {
+  border-color: color-mix(
+    in srgb,
+    var(--md-sys-color-on-surface) calc(var(--md-comp-button-disabled-container-opacity) * 100%),
+    transparent
+  );
 }

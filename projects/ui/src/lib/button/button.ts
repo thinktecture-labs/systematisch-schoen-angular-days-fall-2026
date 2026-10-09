@@ -7,7 +7,8 @@ export type ButtonSize = 's' | 'm' | 'l';
  * Button des Designsystems.
  *
  * Setzt auf das native `<button>` bzw. `<a>` auf: Tastatur, Fokus, `disabled` und Formulare
- * kommen vom Browser. Die Komponente liefert nur Aussehen und Varianten.
+ * kommen vom Browser. Die Komponente liefert nur Aussehen und Varianten, und die kennt sie
+ * ausschließlich als Token-Rollen (`--md-comp-button-*`), nie als Farben.
  *
  * ```html
  * <button ds-button variant="outlined" size="l">Speichern</button>
@@ -19,7 +20,9 @@ export type ButtonSize = 's' | 'm' | 'l';
   styleUrl: './button.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    // Übung 3: Varianten als Attribute schreiben, damit das CSS mit :host([variant='…']) reagieren kann.
+    // Varianten als Attribute: das CSS reagiert mit :host([variant='…']).
+    '[attr.variant]': 'variant()',
+    '[attr.size]': 'size()',
   },
 })
 export class Button {

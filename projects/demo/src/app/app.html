@@ -31,10 +31,28 @@
 
 <section>
   <h2>Komponenten</h2>
+  <p>Varianten sind Attribute, Farben kommen aus <code>--md-comp-button-*</code>.</p>
   <div class="row">
     <button ds-button>Filled</button>
+    <button ds-button variant="tonal">Tonal</button>
+    <button ds-button variant="outlined">Outlined</button>
+    <button ds-button variant="text">Text</button>
     <button ds-button disabled>Disabled</button>
-    <!-- Übung 3: variant="tonal" | "outlined" | "text" und size="s" | "l" -->
+  </div>
+  <div class="row">
+    <button ds-button size="s">Small</button>
+    <button ds-button>Medium</button>
+    <button ds-button size="l">Large</button>
+    <a ds-button variant="outlined" href="https://m3.material.io/components/buttons/overview">
+      Link als Button
+    </a>
+  </div>
+  <h3>Angular Material mit denselben Tokens</h3>
+  <div class="row">
+    <button matButton="filled">Filled</button>
+    <button matButton="tonal">Tonal</button>
+    <button matButton="outlined">Outlined</button>
+    <button matButton>Text</button>
   </div>
 </section>
 
@@ -44,5 +62,9 @@
     Diese Karte setzt <code>color-scheme: dark</code> auf sich selbst. Alles darunter liest die
     Dark-Werte aus <code>light-dark()</code>, der Rest der Seite bleibt, wie er ist.
   </p>
-  <button ds-button>Ich bin dunkel</button>
+  <div class="row">
+    <button ds-button>Ich bin dunkel</button>
+    <button ds-button variant="outlined">Outlined im Dunkeln</button>
+    <button matButton="filled">Material auch</button>
+  </div>
 </section>

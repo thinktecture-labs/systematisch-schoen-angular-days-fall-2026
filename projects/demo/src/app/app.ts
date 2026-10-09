@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { MatButton } from '@angular/material/button';
 import { Button } from '@ui';
 
 interface Swatch {
@@ -10,7 +11,7 @@ type Theme = 'system' | 'light' | 'dark';
 
 @Component({
   selector: 'app-root',
-  imports: [Button],
+  imports: [Button, MatButton],
   templateUrl: './app.html',
   styleUrl: './app.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
