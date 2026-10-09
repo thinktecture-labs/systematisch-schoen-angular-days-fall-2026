@@ -1,0 +1,22 @@
+{
+  "sys": {
+    "state": {
+      "hover": {
+        "state-layer-opacity": { "$type": "number", "$value": 0.08 }
+      },
+      "focus": {
+        "state-layer-opacity": { "$type": "number", "$value": 0.1 }
+      },
+      "pressed": {
+        "state-layer-opacity": { "$type": "number", "$value": 0.1 }
+      },
+      "dragged": {
+        "state-layer-opacity": { "$type": "number", "$value": 0.16 }
+      },
+      "disabled": {
+        "container-opacity": { "$type": "number", "$value": 0.12 },
+        "content-opacity": { "$type": "number", "$value": 0.38 }
+      }
+    }
+  }
+}

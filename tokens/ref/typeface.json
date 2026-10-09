@@ -1,0 +1,28 @@
+{
+  "ref": {
+    "typeface": {
+      "brand": {
+        "$type": "fontFamily",
+        "$value": ["Quattrocento Sans", "Helvetica Neue", "sans-serif"],
+        "$description": "Markenschrift für Display, Headline und Title"
+      },
+      "plain": {
+        "$type": "fontFamily",
+        "$value": ["system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"],
+        "$description": "Lesetext für Body und Label"
+      },
+      "weight-regular": {
+        "$type": "fontWeight",
+        "$value": 400
+      },
+      "weight-medium": {
+        "$type": "fontWeight",
+        "$value": 500
+      },
+      "weight-bold": {
+        "$type": "fontWeight",
+        "$value": 700
+      }
+    }
+  }
+}

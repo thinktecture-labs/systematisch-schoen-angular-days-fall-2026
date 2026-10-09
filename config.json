@@ -1,12 +1,19 @@
 {
-  "source": ["tokens/**/*.json"],
+  "source": [
+    "tokens/ref/*.json",
+    "tokens/sys/*.json",
+    "tokens/sys/color/light.json",
+    "tokens/comp/*.json"
+  ],
   "platforms": {
     "css": {
-      "transformGroup": "scss",
+      "transformGroup": "css",
+      "transforms": ["size/pxToRem"],
+      "prefix": "md",
       "buildPath": "projects/ui/src/lib/styles/tokens/",
       "files": [
         {
-          "destination": "tokens.scss",
+          "destination": "tokens.css",
           "format": "css/variables"
         }
       ]
