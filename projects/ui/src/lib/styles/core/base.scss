@@ -1,0 +1,31 @@
+@use '../mixins/typography';
+
+// Basis-Styles: Seite liest nur Token-Rollen, nie Farben.
+html {
+  @include typography.style('body-large');
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  accent-color: var(--md-sys-color-primary);
+}
+
+:focus-visible {
+  outline: 2px solid var(--md-sys-color-primary);
+  outline-offset: 2px;
+}
+
+h1 {
+  @include typography.style('display-small');
+}
+
+h2 {
+  @include typography.style('headline-small');
+}
+
+h3 {
+  @include typography.style('title-large');
+}
+
+code {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 0.875em;
+}

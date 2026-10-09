@@ -1,0 +1,8 @@
+/// Setzt `font` und `letter-spacing` aus den Typescale-Tokens eines Stils.
+/// Beispiel: `@include typography.style('body-large');`
+/// Verfügbare Stile: display|headline|title|body|label jeweils -large|-medium|-small
+@mixin style($name) {
+  font: var(--md-sys-typescale-#{$name}-weight) var(--md-sys-typescale-#{$name}-size) /
+    var(--md-sys-typescale-#{$name}-line-height) var(--md-sys-typescale-#{$name}-font);
+  letter-spacing: var(--md-sys-typescale-#{$name}-tracking);
+}

@@ -1,0 +1,26 @@
+// Übung 3: Dieser Button kennt noch Hex-Werte und nur eine Variante.
+// Ziel: nur noch Token-Rollen (var(--md-comp-button-…), var(--md-sys-…)) und
+// Varianten über :host([variant='…']) bzw. :host([size='…']).
+
+:host {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.5rem;
+  padding: 0 1.5rem;
+  border: 0;
+  border-radius: 1000px;
+  background: #6750a4;
+  color: #ffffff;
+  font:
+    500 0.875rem / 1.25rem 'Quattrocento Sans',
+    sans-serif;
+  letter-spacing: 0.1px;
+  cursor: pointer;
+}
+
+:host(:disabled) {
+  opacity: 0.38;
+  cursor: default;
+}

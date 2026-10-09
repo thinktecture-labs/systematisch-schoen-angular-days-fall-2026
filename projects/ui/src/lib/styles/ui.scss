@@ -1,0 +1,6 @@
+// Globaler Einstieg des Designsystems.
+// Einmal pro App laden (angular.json → styles) und einmal in Storybook (angular.json → storybook.styles).
+@use 'tokens/tokens'; // generiert von Style Dictionary: npm run build:tokens
+@use 'core/font';
+@use 'core/reset';
+@use 'core/base';
